@@ -2,19 +2,40 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>VibeCheck</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <h1> VibeCheck! </h1>
-    <p>Describe your mood or what you're going through & get a book that fits.</p>
-    <textarea id="mood" placeholder="e.g. I feel stuck and need something that makes me think differently..."></textarea>
-    <button onclick="getRecommendation()">Find my book</button>
-    <div id="result"></div>
-    <div id="history"></div>
+  <div class="page">
+
+    <header>
+      <h1>VibeCheck</h1>
+      <p class="tagline">Tell me how you feel. I'll find your next book.</p>
+    </header>
+
+    <main>
+        <div class="mood-chips">
+  <span class="chip" onclick="setMood('heartbroken')">💔 heartbroken</span>
+  <span class="chip" onclick="setMood('cozy & content')">☕ cozy</span>
+  <span class="chip" onclick="setMood('restless and can\'t sit still')">〰️ restless</span>
+  <span class="chip" onclick="setMood('hopeful but scared')">✨ hopeful</span>
+  <span class="chip" onclick="setMood('burned out and exhausted')">🕯️ burned out</span>
+  <span class="chip" onclick="setMood('romantic and dreamy')">🌙 romantic</span>
+</div>
+      <div class="input-section">
+        <textarea id="mood" placeholder="e.g. I feel stuck and restless, like I'm waiting for my life to actually begin..."></textarea>
+        <button onclick="getRecommendation()">
+          <span id="btn-text">Find my book</span>
+        </button>
+      </div>
+
+      <div id="result"></div>
+      <div id="history"></div>
+    </main>
+
   </div>
-  
   <script src="script.js"></script>
 </body>
 </html>

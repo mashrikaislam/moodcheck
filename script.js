@@ -75,8 +75,7 @@ async function getRecommendation() {
 
   if (!mood.trim()) return;
 
-  resultDiv.innerHTML = "<p>Finding your book...</p>";
-
+    resultDiv.innerHTML = "<p class='loading'>Finding your book...</p>";
   try {
     const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "POST",
@@ -120,7 +119,7 @@ FIRST LINE: [one compelling sentence to pull them in]`
       else if (line.startsWith("FIRST LINE:")) firstLine = line.replace("FIRST LINE:", "").trim();
     });
 
-    resultDiv.innerHTML = "<p>Finding your book cover...</p>";
+    resultDiv.innerHTML = "<p class='loading'>Finding your book cover...</p>";
     const { coverUrl, openLibraryUrl } = await getBookCover(title, author);
 
     let html = '<div class="book-card">';
@@ -145,3 +144,8 @@ FIRST LINE: [one compelling sentence to pull them in]`
 
 // Render history on page load
 renderHistory();
+
+function setMood(text) {
+  document.getElementById("mood").value = text;
+  document.getElementById("mood").focus();
+}

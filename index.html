@@ -3,39 +3,137 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VibeCheck</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <title>Vibe Check</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-  <div class="page">
+  <div class="app-shell">
 
-    <header>
-      <h1>VibeCheck</h1>
-      <p class="tagline">Tell me how you feel. I'll find your next book.</p>
-    </header>
-
-    <main>
-        <div class="mood-chips">
-  <span class="chip" onclick="setMood('heartbroken')">💔 heartbroken</span>
-  <span class="chip" onclick="setMood('cozy & content')">☕ cozy</span>
-  <span class="chip" onclick="setMood('restless and can\'t sit still')">〰️ restless</span>
-  <span class="chip" onclick="setMood('hopeful but scared')">✨ hopeful</span>
-  <span class="chip" onclick="setMood('burned out and exhausted')">🕯️ burned out</span>
-  <span class="chip" onclick="setMood('romantic and dreamy')">🌙 romantic</span>
-</div>
-      <div class="input-section">
-        <textarea id="mood" placeholder="e.g. I feel stuck and restless, like I'm waiting for my life to actually begin..."></textarea>
-        <button onclick="getRecommendation()">
-          <span id="btn-text">Find my book</span>
-        </button>
+    <nav class="navbar">
+      <div class="brand">
+        <div class="brand-icon">📚</div>
+        <span>Vibe Check</span>
       </div>
 
+      <div class="nav-links">
+        <a class="active">Home</a>
+        <a>Discover</a>
+        <a>Playlists</a>
+        <a>About</a>
+      </div>
+
+      <button class="mode-pill" type="button">🌙 Late night mode</button>
+    </nav>
+
+    <main>
+      <section class="hero">
+        <div class="hero-content">
+          <h1>Tell us your mood.<br>We’ll find your next book.</h1>
+
+          <p class="tagline">
+            Share how you feel or what you’re going through, and we’ll match you with a book and a song.
+          </p>
+
+          <div class="input-section">
+            <textarea id="mood" placeholder="I feel emotionally drained but hopeful, and I want something comforting."></textarea>
+
+            <button onclick="getRecommendation()" class="match-btn" type="button">
+              <span id="btn-text">Get My Match</span>
+              <span>→</span>
+            </button>
+          </div>
+
+          <div class="try-row">
+            <span>Try a mood:</span>
+
+            <div class="mood-chips">
+              <span class="chip" onclick="setMood('heartbroken')">♡ heartbroken</span>
+              <span class="chip" onclick="setMood('cozy & content')">☕ cozy</span>
+              <span class="chip" onclick="setMood('restless and can\'t sit still')">〰 restless</span>
+              <span class="chip" onclick="setMood('hopeful but scared')">✧ hopeful</span>
+              <span class="chip" onclick="setMood('burned out and exhausted')">🕯 burned out</span>
+              <span class="chip" onclick="setMood('romantic and dreamy')">♡ romantic</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <div id="result"></div>
-      <div id="history"></div>
+
+      <section class="source-row">
+        <div class="source-card">
+          <div class="source-icon">📖</div>
+          <div>
+            <strong>Book data powered by Open Library</strong>
+            <p>Open, editable library catalog for the world.</p>
+          </div>
+        </div>
+
+        <div class="source-card">
+          <div class="source-icon spotify-dot">●</div>
+          <div>
+            <strong>Music match powered by Spotify search</strong>
+            <p>Finds a song that matches the mood of your recommendation.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="dashboard-row">
+        <div class="mini-panel">
+          <div class="panel-header">
+            <h2>Tonight’s moods</h2>
+            <span>View all</span>
+          </div>
+
+          <div class="mood-gallery">
+            <div>
+              <span class="mood-art">🌙</span>
+              <p>Late Night Thinking</p>
+            </div>
+            <div>
+              <span class="mood-art">🛋️</span>
+              <p>Cozy & Comforting</p>
+            </div>
+            <div>
+              <span class="mood-art">🌧️</span>
+              <p>Rainy Day Reads</p>
+            </div>
+            <div>
+              <span class="mood-art">✨</span>
+              <p>Quiet Hope</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mini-panel">
+          <div class="panel-header">
+            <h2>Recent vibes</h2>
+            <span>View all</span>
+          </div>
+
+          <div id="history" class="recent-list"></div>
+        </div>
+
+        <div class="mini-panel">
+          <div class="panel-header">
+            <h2>Readers also loved</h2>
+            <span>View all</span>
+          </div>
+
+          <div class="book-strip">
+            <div>The Midnight Library</div>
+            <div>Remarkably Bright Creatures</div>
+            <div>The House in the Cerulean Sea</div>
+          </div>
+        </div>
+      </section>
     </main>
 
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>

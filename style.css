@@ -107,17 +107,32 @@ button:disabled { background: #4a4030; color: #7a6a50; cursor: not-allowed; }
 
 /* Result card */
 #result { margin-top: 40px; }
-
 .book-card {
-  display: flex;
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  grid-template-rows: auto auto;
   gap: 24px;
-  align-items: flex-start;
   padding: 28px;
   background: #1a1814;
   border-radius: 16px;
   border: 1px solid #2e2b24;
   box-shadow: 0 8px 40px rgba(0,0,0,0.4);
   animation: fadeUp 0.4s ease;
+}
+
+.cover {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.book-info {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.song-card {
+  grid-column: 1 / -1;
+  grid-row: 2;
 }
 
 @keyframes fadeUp {
@@ -274,3 +289,47 @@ button:disabled { background: #4a4030; color: #7a6a50; cursor: not-allowed; }
   .cover { width: 80px; }
   button { align-self: stretch; text-align: center; }
 }
+.song-card {
+  margin-top: 16px;
+  padding: 18px 20px;
+  background: #111;
+  border-radius: 12px;
+  border: 1px solid #1db954;
+  width: 100%;
+}
+
+.song-label {
+  font-size: 0.72rem;
+  color: #1db954;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+.song-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  color: #f0e6cc;
+  margin-bottom: 6px;
+}
+
+.song-reason {
+  font-size: 0.82rem;
+  color: #7a7060;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.spotify-btn {
+  display: inline-block;
+  background: #1db954;
+  color: #000;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.spotify-btn:hover { opacity: 0.85; }

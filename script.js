@@ -3,15 +3,9 @@ const API_KEY = "placeholder";
 // Load history from localStorage or start empty
 let history = JSON.parse(localStorage.getItem("vibecheck-history") || "[]");
 
-function saveToHistory(mood, title, author, why, firstLine, coverUrl, openLibraryUrl) {
+function saveToHistory(mood, title, author, why, firstLine, coverUrl, openLibraryUrl, song, songReason) {
   const entry = {
-    mood,
-    title,
-    author,
-    why,
-    firstLine,
-    coverUrl,
-    openLibraryUrl,
+    mood, title, author, why, firstLine, coverUrl, openLibraryUrl, song, songReason,
     date: new Date().toLocaleDateString()
   };
   history.unshift(entry); // add to front
@@ -97,7 +91,9 @@ Otherwise recommend ONE real, well-known book that emotionally fits this feeling
 TITLE: [book title]
 AUTHOR: [author name]
 WHY: [2-3 sentences on why this book fits their mood specifically]
-FIRST LINE: [one compelling sentence to pull them in]`
+FIRST LINE: [one compelling sentence to pull them in]
+SONG: [song title] - [artist name]
+SONG REASON: [one sentence on why this song fits the mood]`
         }]
       })
     });
@@ -112,12 +108,15 @@ FIRST LINE: [one compelling sentence to pull them in]`
 
     const lines = text.split("\n").filter(l => l.trim());
     let title = "", author = "", why = "", firstLine = "";
-    lines.forEach(line => {
-      if (line.startsWith("TITLE:")) title = line.replace("TITLE:", "").trim();
-      else if (line.startsWith("AUTHOR:")) author = line.replace("AUTHOR:", "").trim();
-      else if (line.startsWith("WHY:")) why = line.replace("WHY:", "").trim();
-      else if (line.startsWith("FIRST LINE:")) firstLine = line.replace("FIRST LINE:", "").trim();
-    });
+let song = "", songReason = "";
+lines.forEach(line => {
+  if (line.startsWith("TITLE:")) title = line.replace("TITLE:", "").trim();
+  else if (line.startsWith("AUTHOR:")) author = line.replace("AUTHOR:", "").trim();
+  else if (line.startsWith("WHY:")) why = line.replace("WHY:", "").trim();
+  else if (line.startsWith("FIRST LINE:")) firstLine = line.replace("FIRST LINE:", "").trim();
+  else if (line.startsWith("SONG:")) song = line.replace("SONG:", "").trim();
+  else if (line.startsWith("SONG REASON:")) songReason = line.replace("SONG REASON:", "").trim();
+});
 
     resultDiv.innerHTML = "<p class='loading'>Finding your book cover...</p>";
     const { coverUrl, openLibraryUrl } = await getBookCover(title, author);
@@ -129,13 +128,26 @@ FIRST LINE: [one compelling sentence to pull them in]`
     html += `<p class="author">by ${author}</p>`;
     html += `<p class="why">${why}</p>`;
     html += `<p class="firstline">"${firstLine}"</p>`;
-    if (openLibraryUrl) html += `<a href="${openLibraryUrl}" target="_blank" class="more-link">Learn more →</a>`;
-    html += `</div></div>`;
+if (openLibraryUrl) html += `<a href="${openLibraryUrl}" target="_blank" class="more-link">Learn more →</a>`;
+html += `</div>`;
+
+if (song) {
+  const spotifyUrl = `https://open.spotify.com/search/${encodeURIComponent(song)}`;
+  html += `
+    <div class="song-card">
+      <div class="song-label">🎵 Your song match</div>
+      <div class="song-title">${song}</div>
+      <div class="song-reason">${songReason}</div>
+      <a href="${spotifyUrl}" target="_blank" class="spotify-btn">Open in Spotify →</a>
+    </div>
+  `;
+}
+
+html += `</div>`;
     resultDiv.innerHTML = html;
 
     // Save to history
-    saveToHistory(mood, title, author, why, firstLine, coverUrl, openLibraryUrl);
-
+    saveToHistory(mood, title, author, why, firstLine, coverUrl, openLibraryUrl, song, songReason);
   } catch (err) {
     resultDiv.innerHTML = "<p>Something went wrong. Check your API key.</p>";
     console.error(err);

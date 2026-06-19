@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Discover — Vibe Check</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="discover.css" />
+</head>
+
+<body>
+  <div class="app-shell">
+
+    <nav class="navbar">
+      <a href="index.html" class="brand">
+        <div class="brand-icon">📚</div>
+        <span>Vibe Check</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="discover.html" class="active">Discover</a>
+        <a href="about.html">About</a>
+      </div>
+    </nav>
+
+    <main>
+      <section class="discover-hero">
+        <h1>Discover by mood</h1>
+        <p class="tagline">Pick a feeling. We'll pull real books that match it.</p>
+      </section>
+
+      <section class="category-grid" id="category-grid">
+        <!-- categories injected by JS -->
+      </section>
+
+      <section id="book-results" class="book-results"></section>
+    </main>
+
+  </div>
+
+  <script src="discover.js"></script>
+  <script src="theme.js"></script>
+</body>
+</html>

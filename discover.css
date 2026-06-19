@@ -1,0 +1,143 @@
+.discover-hero {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 56px 28px 12px;
+  text-align: center;
+}
+
+.discover-hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+  color: #f6ead9;
+  margin-bottom: 12px;
+}
+
+.discover-hero .tagline {
+  color: #b8ab9b;
+  font-size: 1rem;
+}
+
+.category-grid {
+  max-width: 1180px;
+  margin: 32px auto 0;
+  padding: 0 28px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.category-card {
+  background: rgba(27, 22, 18, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 22px 18px;
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.15s;
+  text-align: left;
+}
+
+.category-card:hover {
+  border-color: rgba(230, 161, 93, 0.45);
+  transform: translateY(-2px);
+}
+
+.category-card.active {
+  border-color: #e6a15d;
+  background: rgba(230, 161, 93, 0.1);
+}
+
+.category-emoji {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.category-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  color: #f1dfc9;
+  margin-bottom: 4px;
+}
+
+.category-desc {
+  font-size: 0.78rem;
+  color: #8d8171;
+  line-height: 1.4;
+}
+
+.book-results {
+  max-width: 1180px;
+  margin: 40px auto 80px;
+  padding: 0 28px;
+}
+
+.results-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  color: #f1dfc9;
+  margin-bottom: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 32px;
+}
+
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
+}
+
+.book-grid-card {
+  background: rgba(27, 22, 18, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 12px;
+  text-decoration: none;
+  transition: border-color 0.2s, transform 0.15s;
+}
+
+.book-grid-card:hover {
+  border-color: rgba(230, 161, 93, 0.45);
+  transform: translateY(-2px);
+}
+
+.book-grid-cover {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
+}
+
+.book-grid-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.88rem;
+  color: #f1dfc9;
+  line-height: 1.3;
+  margin-bottom: 4px;
+}
+
+.book-grid-author {
+  font-size: 0.74rem;
+  color: #8d8171;
+}
+
+.discover-loading {
+  text-align: center;
+  color: #7f7468;
+  font-size: 0.9rem;
+  padding: 40px 0;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@media (max-width: 900px) {
+  .category-grid { grid-template-columns: repeat(2, 1fr); }
+  .book-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 560px) {
+  .category-grid { grid-template-columns: 1fr 1fr; padding: 0 20px; }
+  .book-grid { grid-template-columns: repeat(2, 1fr); }
+  .book-results, .discover-hero { padding-left: 20px; padding-right: 20px; }
+}

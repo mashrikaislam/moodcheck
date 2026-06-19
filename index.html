@@ -18,14 +18,15 @@
         <span>Vibe Check</span>
       </div>
 
-      <div class="nav-links">
-        <a class="active">Home</a>
-        <a>Discover</a>
-        <a>Playlists</a>
-        <a>About</a>
-      </div>
+  <div class="nav-links">
+  <a href="index.html" class="active">Home</a>
+  <a href="discover.html">Discover</a>
+  <a href="about.html">About</a>
+  </div>
 
-      <button class="mode-pill" type="button">🌙 Late night mode</button>
+<button class="mode-pill" id="mode-toggle" onclick="toggleMode()" type="button">
+  <span id="mode-icon">🌙</span> <span id="mode-text">Late night mode</span>
+</button>
     </nav>
 
     <main>
@@ -40,8 +41,7 @@
           <div class="input-section">
             <textarea id="mood" placeholder="I feel emotionally drained but hopeful, and I want something comforting."></textarea>
 
-            <button onclick="getRecommendation()" class="match-btn" type="button">
-              <span id="btn-text">Get My Match</span>
+        <button onclick="getRecommendation(); return false;" class="match-btn" type="button">              <span id="btn-text">Get My Match</span>
               <span>→</span>
             </button>
           </div>
@@ -61,7 +61,6 @@
         </div>
       </section>
 
-      <div id="result"></div>
 
       <section class="source-row">
         <div class="source-card">
@@ -130,10 +129,13 @@
           </div>
         </div>
       </section>
+      <div id="result"></div>
+
     </main>
 
   </div>
 
   <script src="script.js"></script>
+  <script src="theme.js"></script>
 </body>
 </html>

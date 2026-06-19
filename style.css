@@ -5,15 +5,43 @@
   margin: 0;
   padding: 0;
 }
+:root {
+  --bg-main: #080604;
+  --bg-mid: #0f0e0c;
+  --bg-card: rgba(27, 22, 18, 0.92);
+  --text-primary: #e8dfc8;
+  --text-heading: #f6ead9;
+  --text-muted: #b8ab9b;
+  --text-faint: #7f7468;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --accent: #e6a15d;
+  --hero-overlay: rgba(8, 6, 4, 0.96);
+  --hero-overlay-2: rgba(8, 6, 4, 0.25);
+}
+
+body.day-mode {
+  --bg-main: #fdf6ec;
+  --bg-mid: #faeed9;
+  --bg-card: rgba(255, 252, 246, 0.94);
+  --text-primary: #3d2f22;
+  --text-heading: #2b2015;
+  --text-muted: #7a6650;
+  --text-faint: #9c8a73;
+  --border-color: rgba(61, 47, 34, 0.1);
+  --accent: #c75e3c;
+  --hero-overlay: rgba(253, 246, 236, 0.88);
+  --hero-overlay-2: rgba(253, 246, 236, 0.35);
+}
 
 body {
   font-family: 'Inter', sans-serif;
   background:
     radial-gradient(circle at 84% 20%, rgba(201, 129, 66, 0.2), transparent 28%),
     radial-gradient(circle at 12% 24%, rgba(111, 73, 38, 0.18), transparent 34%),
-    linear-gradient(180deg, #080604 0%, #0f0e0c 58%, #080706 100%);
-  color: #e8dfc8;
+    linear-gradient(180deg, var(--bg-main) 0%, var(--bg-mid) 58%, var(--bg-main) 100%);
+  color: var(--text-primary);
   min-height: 100vh;
+  transition: background 0.4s ease, color 0.4s ease;
 }
 
 body::before {
@@ -23,14 +51,23 @@ body::before {
   height: 420px;
   pointer-events: none;
   background:
-    linear-gradient(90deg, rgba(8, 6, 4, 0.96) 0%, rgba(8, 6, 4, 0.82) 52%, rgba(8, 6, 4, 0.25) 100%),
+    linear-gradient(90deg, var(--hero-overlay) 0%, var(--hero-overlay) 52%, var(--hero-overlay-2) 100%),
     url("https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1800&q=80");
   background-size: cover;
   background-position: center;
   opacity: 0.42;
   z-index: -1;
+  transition: opacity 0.4s ease;
 }
 
+body.day-mode::before {
+  background:
+    linear-gradient(90deg, var(--hero-overlay) 0%, var(--hero-overlay) 52%, var(--hero-overlay-2) 100%),
+    url("daytime-bg");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.65;
+}
 .app-shell {
   min-height: 100vh;
 }
@@ -43,7 +80,7 @@ body::before {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid var(--border-color);
   background: rgba(5, 4, 3, 0.76);
   backdrop-filter: blur(18px);
   position: sticky;
@@ -58,7 +95,7 @@ body::before {
   font-family: 'Playfair Display', serif;
   font-size: 1.65rem;
   font-weight: 700;
-  color: #f5ead5;
+  color: var(--text-heading);
 }
 
 .brand-icon {
@@ -76,7 +113,7 @@ body::before {
   display: flex;
   gap: 42px;
   font-size: 0.9rem;
-  color: #8d8171;
+  color: var(--text-faint);
 }
 
 .nav-links a {
@@ -85,10 +122,8 @@ body::before {
 }
 
 .nav-links .active {
-  color: #e6b77c;
-  position: relative;
+  color: var(--accent);
 }
-
 .nav-links .active::after {
   content: "";
   position: absolute;
@@ -96,12 +131,12 @@ body::before {
   right: 0;
   bottom: -26px;
   height: 2px;
-  background: #e6b77c;
+  background: var(--accent);
 }
 
 .mode-pill {
   background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-color);
   color: #dfd0bd;
   border-radius: 999px;
   padding: 10px 16px;
@@ -127,13 +162,13 @@ body::before {
   font-size: clamp(3rem, 6vw, 5.35rem);
   line-height: 0.97;
   letter-spacing: -0.055em;
-  color: #f6ead9;
+  color: var(--text-heading);
   margin-bottom: 20px;
   font-weight: 600;
 }
 
 .tagline {
-  color: #b8ab9b;
+  color: var(--text-muted);
   font-size: 1.05rem;
   line-height: 1.6;
   max-width: 580px;
@@ -157,16 +192,16 @@ textarea {
   font-family: 'Inter', sans-serif;
   font-size: 0.95rem;
   line-height: 1.5;
-  border: 1px solid rgba(239, 190, 132, 0.3);
+  border: 1px solid var(--border-color);
   border-radius: 14px;
-  background: rgba(13, 10, 8, 0.82);
+  background: var(--bg-card);
   resize: none;
-  color: #f2e7d7;
+  color: var(--text-primary);
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
 }
 
 textarea::placeholder {
-  color: #776b5d;
+  color: var(--text-faint);
 }
 
 textarea:focus {
@@ -175,7 +210,7 @@ textarea:focus {
 }
 
 button {
-  background: linear-gradient(135deg, #f0ad66, #d98f47);
+  background: linear-gradient(135deg, var(--accent), #b54e30);
   color: #21140b;
   padding: 16px 24px;
   border: none;
@@ -228,7 +263,7 @@ button:disabled {
 
 .chip {
   background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-color);
   color: #cbbdaa;
   padding: 7px 14px;
   border-radius: 999px;
@@ -259,18 +294,16 @@ button:disabled {
 }
 
 .match-card {
-  background:
-    linear-gradient(180deg, rgba(33, 27, 21, 0.96), rgba(22, 18, 15, 0.96));
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: 18px;
   padding: 18px;
   box-shadow: 0 18px 60px rgba(0, 0, 0, 0.42);
 }
-
 .card-label {
   font-family: 'Playfair Display', serif;
   font-size: 1.05rem;
-  color: #f1dfc9;
+  color: var(--text-heading);
   margin-bottom: 14px;
 }
 
@@ -422,8 +455,8 @@ button:disabled {
 }
 
 .source-card {
-  background: rgba(27, 22, 18, 0.88);
-  border: 1px solid rgba(255, 255, 255, 0.075);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: 14px;
   padding: 14px 18px;
   display: flex;
@@ -447,7 +480,7 @@ button:disabled {
 }
 
 .source-card p {
-  color: #7f7468;
+  color: var(--text-faint);
   font-size: 0.74rem;
   margin-top: 3px;
 }
@@ -464,8 +497,8 @@ button:disabled {
 }
 
 .mini-panel {
-  background: rgba(27, 22, 18, 0.92);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: 16px;
   padding: 16px;
   min-height: 190px;
@@ -523,7 +556,7 @@ button:disabled {
 
 .recent-list:empty::before {
   content: "Your recent matches will appear here after you get a recommendation.";
-  color: #7f7468;
+  color: var(--text-faint);
   font-size: 0.82rem;
   line-height: 1.5;
 }
@@ -607,7 +640,7 @@ button:disabled {
 
 .loading {
   text-align: center;
-  color: #7f7468;
+  color: var(--text-faint);
   font-size: 0.9rem;
   padding: 34px 0;
   animation: pulse 1.5s ease-in-out infinite;
@@ -617,8 +650,8 @@ button:disabled {
   max-width: 1180px;
   margin: 0 auto;
   color: #bda996;
-  background: rgba(27, 22, 18, 0.92);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: 16px;
   padding: 22px;
 }

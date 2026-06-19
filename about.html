@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Vibe Check</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="about.css" />
+</head>
+
+<body>
+  <div class="app-shell">
+
+    <nav class="navbar">
+      <a href="index.html" class="brand">
+        <div class="brand-icon">📚</div>
+        <span>Vibe Check</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="discover.html">Discover</a>
+        <a href="about.html" class="active">About</a>
+      </div>
+    </nav>
+
+    <main class="about-main">
+      <section class="about-hero">
+        <h1>About Vibe Check</h1>
+        <p class="tagline">A mood-based recommendation engine for books and music.</p>
+      </section>
+
+      <section class="about-section">
+        <h2>What it does</h2>
+        <p>Vibe Check takes a free-text description of how you're feeling and matches it to a real book and song. -- !! </p>
+      </section>
+
+      <section class="about-section">
+        <h2>Why I built it</h2>
+        <p>I read a lot and listen to a lot of music, and I noticed both are usually mood-driven for me — I pick a book or a song based on how I feel that day, not just what's popular. I wanted to see if I could build something that captured that instinct.</p>
+      </section>
+
+      <section class="about-section">
+        <h2>How it works</h2>
+        <ol class="how-list">
+          <li><strong>Mood extraction</strong> — an LLM call converts your free-text mood into structured emotional tags</li>
+          <li><strong>Book search</strong> — those tags query Open Library's real catalog for matching subjects</li>
+          <li><strong>Ranking</strong> — books are scored by how many tags overlap with their subjects</li>
+          <li><strong>Explanation</strong> — a second LLM call explains why the top-ranked book fits your mood, and suggests a matching song</li>
+          <li><strong>Persistence</strong> — every match is saved to a real database so your history sticks around</li>
+        </ol>
+      </section>
+
+      <section class="about-section">
+        <h2>Built with</h2>
+        <div class="tech-tags">
+          <span class="tech-tag">Python · Flask</span>
+          <span class="tech-tag">SQLite</span>
+          <span class="tech-tag">Groq API (Llama 3.3)</span>
+          <span class="tech-tag">Open Library API</span>
+          <span class="tech-tag">Vanilla JS · HTML · CSS</span>
+        </div>
+      </section>
+
+      <section class="about-footer">
+        <p>Built by <strong>Mashrika Islam</strong></p>
+      </section>
+    </main>
+
+  </div>
+  <script src="theme.js"></script>
+</body>
+</html>

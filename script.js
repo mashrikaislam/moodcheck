@@ -88,6 +88,7 @@ console.log("Full result:", result); // added
           <div class="book-layout">
             ${coverUrl ? `<img src="${coverUrl}" alt="Book cover" class="cover" />` : `<div class="cover"></div>`}
             <div class="book-info">
+              ${result.curatedPick ? `<div class="curated-badge">✦ Author's Pick</div>` : ""}
               <h2>${safeTitle}</h2>
               <p class="author">${safeAuthor}</p>
               <div class="book-meta">
@@ -108,8 +109,7 @@ console.log("Full result:", result); // added
         <div class="match-card song-match">
           <div class="card-label">🎵 Your Song Match</div>
           <div class="song-layout">
-            <div class="album-art">♪</div>
-            <div class="song-info">
+              ${result.albumArt ? `<img src="${result.albumArt}" alt="album art" class="album-art-img" />` : `<div class="album-art">♪</div>`}            <div class="song-info">
               <h2>${safeSong || "A matching song"}</h2>
               <p class="author">Matched to your mood</p>
               <p class="song-reason">${safeSongReason}</p>

@@ -63,7 +63,7 @@ body::before {
 body.day-mode::before {
   background:
     linear-gradient(90deg, var(--hero-overlay) 0%, var(--hero-overlay) 52%, var(--hero-overlay-2) 100%),
-    url("daytime-bg");
+    url("daytime-bg.png");
   background-size: cover;
   background-position: center;
   opacity: 0.65;
@@ -764,3 +764,29 @@ button:disabled {
     display: none;
   }
 }
+
+.album-art-img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.45);
+  flex-shrink: 0;
+}
+
+.curated-badge {
+  display: inline-block;
+  background: rgba(230, 161, 93, 0.15);
+  border: 1px solid rgba(230, 161, 93, 0.4);
+  color: #e6a15d;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+  display: block;
+  width: fit-content;
+}
+

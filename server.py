@@ -11,8 +11,7 @@ import os
 from datetime import datetime
 
 app = Flask(__name__)
-CORS(app, origins=["http://127.0.0.1:5500", "http://localhost:5500", "http://127.0.0.1:5000"])
-
+CORS(app, origins=["http://127.0.0.1:5500", "http://localhost:5500", "http://127.0.0.1:5000", "https://verse-vqsk.onrender.com"])
 GROQ_URL = "https://api.groq.com/openai/v1/chat/completions"
 MODEL = "llama-3.3-70b-versatile"
 GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")

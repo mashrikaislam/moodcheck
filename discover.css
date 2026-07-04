@@ -1,3 +1,41 @@
+.discover-hero h1 {
+  color: var(--text-heading);
+}
+
+.discover-hero .tagline {
+  color: var(--text-muted);
+}
+
+.category-name {
+  color: var(--text-heading);
+}
+
+.category-desc {
+  color: var(--text-faint);
+}
+
+.results-heading {
+  color: var(--text-heading);
+}
+
+.book-grid-title {
+  color: var(--text-heading);
+}
+
+.book-grid-author {
+  color: var(--text-faint);
+}
+
+.category-card {
+  background: var(--bg-card);
+  border-color: var(--border-color);
+}
+
+.book-grid-card {
+  background: var(--bg-card);
+  border-color: var(--border-color);
+}
+
 .discover-hero {
   max-width: 1180px;
   margin: 0 auto;
@@ -8,13 +46,12 @@
 .discover-hero h1 {
   font-family: 'Playfair Display', serif;
   font-size: clamp(2.2rem, 4.5vw, 3.2rem);
-  color: #f6ead9;
+  color: var(--text-heading);;
   margin-bottom: 12px;
 }
 
 .discover-hero .tagline {
-  color: #b8ab9b;
-  font-size: 1rem;
+  color: var(--text-muted);  font-size: 1rem;
 }
 
 .category-grid {

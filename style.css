@@ -63,7 +63,7 @@ body::before {
 body.day-mode::before {
   background:
     linear-gradient(90deg, var(--hero-overlay) 0%, var(--hero-overlay) 52%, var(--hero-overlay-2) 100%),
-    url("https://imgur.com/a/HuDkiux");
+    url("https://i.imgur.com/YFcIeOl.jpeg");
   background-size: cover;
   background-position: center;
   opacity: 0.65;

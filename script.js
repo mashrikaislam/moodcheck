@@ -100,7 +100,7 @@ console.log("Full result:", result); // added
               <p class="firstline">"${safeFirstLine}"</p>
               <div class="card-actions">
                 ${openLibraryUrl ? `<a href="${openLibraryUrl}" target="_blank" class="outline-btn">View Details</a>` : ""}
-                <button class="ghost-btn" type="button">Add to Want to Read ♡</button>
+                <a href="https://www.goodreads.com/search?q=${encodeURIComponent(title)}" target="_blank" class="ghost-btn" style="text-decoration:none;">View on Goodreads ♡</a>
               </div>
             </div>
           </div>

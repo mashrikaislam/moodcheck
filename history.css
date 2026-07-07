@@ -1,0 +1,102 @@
+.history-hero {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 56px 28px 12px;
+  text-align: center;
+}
+
+.history-hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+  color: var(--text-heading);
+  margin-bottom: 12px;
+}
+
+.history-hero .tagline {
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+.history-list {
+  max-width: 760px;
+  margin: 40px auto 80px;
+  padding: 0 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.history-entry {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  transition: border-color 0.2s;
+}
+
+.history-entry:hover {
+  border-color: var(--accent);
+}
+
+.history-entry-cover {
+  width: 70px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  flex-shrink: 0;
+  background: linear-gradient(160deg, rgba(89,66,48,0.58), rgba(17,14,12,0.95));
+}
+
+.history-entry-info {
+  flex: 1;
+}
+
+.history-entry-mood {
+  font-style: italic;
+  color: var(--text-faint);
+  font-size: 0.82rem;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.history-entry-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  color: var(--text-heading);
+  margin-bottom: 2px;
+}
+
+.history-entry-author {
+  color: var(--text-faint);
+  font-size: 0.8rem;
+  margin-bottom: 10px;
+}
+
+.history-entry-song {
+  font-size: 0.8rem;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.history-entry-date {
+  font-size: 0.72rem;
+  color: var(--text-faint);
+}
+
+.history-entry-link {
+  display: inline-block;
+  color: var(--accent);
+  font-size: 0.78rem;
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent);
+  margin-top: 8px;
+}
+
+@media (max-width: 560px) {
+  .history-list { padding: 0 20px; }
+  .history-hero { padding-left: 20px; padding-right: 20px; }
+}

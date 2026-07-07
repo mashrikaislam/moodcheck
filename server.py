@@ -122,6 +122,10 @@ def get_album_art(song_query):
         print("Last.fm error:", e)
     return {"albumArt": None, "spotifyUrl": ""}
 
+@app.route("/health")
+def health():
+    return "OK", 200
+
 @app.route("/recommend", methods=["POST"])
 def recommend():
     mood = request.json.get("mood", "")

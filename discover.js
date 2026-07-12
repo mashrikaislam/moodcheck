@@ -1,12 +1,12 @@
 const categories = [
-  { name: "Heartbroken", emoji: "💔", subject: "heartbreak+romance", desc: "For when you need to feel less alone" },
-  { name: "Cozy & Comforting", emoji: "☕", subject: "contemporary+fiction", desc: "Warm, gentle, easy to sink into" },
-  { name: "Adventure", emoji: "🧭", subject: "adventure+fiction", desc: "Big journeys, bigger stakes" },
-  { name: "Romance", emoji: "♡", subject: "romance+adult", desc: "Swoony, dreamy, slow-burn" },
-  { name: "Mystery", emoji: "🔍", subject: "mystery+thriller", desc: "Something to keep you guessing" },
-  { name: "Coming of Age", emoji: "🌱", subject: "coming_of_age+young_adult", desc: "Growing up, figuring it out" },
-  { name: "Dark & Twisty", emoji: "🖤", subject: "psychological+fiction", desc: "Unsettling in the best way" },
-  { name: "Hopeful", emoji: "✨", subject: "inspirational+fiction", desc: "Something to lift you up" }
+  { name: "Heartbroken", emoji: "💔", subject: "heartbreak+romance"},
+  { name: "Cozy & Comforting", emoji: "☕", subject: "contemporary+fiction" },
+  { name: "Adventure", emoji: "🧭", subject: "adventure+fiction"},
+  { name: "Romance", emoji: "♡", subject: "romance+adult" },
+  { name: "Mystery", emoji: "🔍", subject: "mystery+thriller"},
+  { name: "Coming of Age", emoji: "🌱", subject: "coming_of_age+young_adult" },
+  { name: "Dark & Twisty", emoji: "🖤", subject: "psychological+fiction" },
+  { name: "Hopeful", emoji: "✨", subject: "inspirational+fiction"}
 ];
 
 const grid = document.getElementById("category-grid");

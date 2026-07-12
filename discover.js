@@ -17,7 +17,6 @@ function renderCategories() {
     <div class="category-card" data-index="${i}" onclick="loadCategory(${i})">
       <span class="category-emoji">${cat.emoji}</span>
       <div class="category-name">${cat.name}</div>
-      <div class="category-desc">${cat.desc}</div>
     </div>
   `).join("");
 }

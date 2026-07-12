@@ -1,12 +1,12 @@
 const categories = [
-  { name: "Heartbroken", emoji: "💔", subject: "heartbreak", desc: "For when you need to feel less alone" },
-  { name: "Cozy & Comforting", emoji: "☕", subject: "cozy_mystery", desc: "Warm, gentle, easy to sink into" },
-  { name: "Adventure", emoji: "🧭", subject: "adventure", desc: "Big journeys, bigger stakes" },
-  { name: "Romance", emoji: "♡", subject: "romance", desc: "Swoony, dreamy, slow-burn" },
-  { name: "Mystery", emoji: "🔍", subject: "mystery", desc: "Something to keep you guessing" },
-  { name: "Coming of Age", emoji: "🌱", subject: "coming_of_age", desc: "Growing up, figuring it out" },
-  { name: "Dark & Twisty", emoji: "🖤", subject: "psychological_fiction", desc: "Unsettling in the best way" },
-  { name: "Hopeful", emoji: "✨", subject: "inspirational", desc: "Something to lift you up" }
+  { name: "Heartbroken", emoji: "💔", subject: "heartbreak+romance", desc: "For when you need to feel less alone" },
+  { name: "Cozy & Comforting", emoji: "☕", subject: "contemporary+fiction", desc: "Warm, gentle, easy to sink into" },
+  { name: "Adventure", emoji: "🧭", subject: "adventure+fiction", desc: "Big journeys, bigger stakes" },
+  { name: "Romance", emoji: "♡", subject: "romance+adult", desc: "Swoony, dreamy, slow-burn" },
+  { name: "Mystery", emoji: "🔍", subject: "mystery+thriller", desc: "Something to keep you guessing" },
+  { name: "Coming of Age", emoji: "🌱", subject: "coming_of_age+young_adult", desc: "Growing up, figuring it out" },
+  { name: "Dark & Twisty", emoji: "🖤", subject: "psychological+fiction", desc: "Unsettling in the best way" },
+  { name: "Hopeful", emoji: "✨", subject: "inspirational+fiction", desc: "Something to lift you up" }
 ];
 
 const grid = document.getElementById("category-grid");
@@ -31,9 +31,20 @@ async function loadCategory(index) {
   resultsDiv.innerHTML = `<p class="discover-loading">Finding ${cat.name.toLowerCase()} books...</p>`;
 
   try {
-    const response = await fetch(`https://openlibrary.org/search.json?subject=${cat.subject}&limit=10&language=eng`);
+    const response = await fetch(`https://openlibrary.org/search.json?subject=${cat.subject}&limit=30&language=eng`);
     const data = await response.json();
-    const books = (data.docs || []).filter(b => b.cover_i).slice(0, 10);
+
+    const books = (data.docs || []).filter(b => {
+      if (!b.cover_i) return false;
+      const subjects = (b.subject || []).map(s => s.toLowerCase());
+      const isChildrens = subjects.some(s =>
+        s.includes("juvenile") ||
+        s.includes("children") ||
+        s.includes("picture book") ||
+        s.includes("young reader")
+      );
+      return !isChildrens;
+    }).slice(0, 10);
 
     if (books.length === 0) {
       resultsDiv.innerHTML = `<p class="discover-loading">No books found for this mood, try another one.</p>`;

@@ -79,6 +79,7 @@ def groq_call(prompt):
         "Content-Type": "application/json",
         "Authorization": f"Bearer {GROQ_API_KEY}"
     }, json={"model": MODEL, "messages": [{"role": "user", "content": prompt}]})
+    print("Groq response:", response.json())  
     return response.json()["choices"][0]["message"]["content"].strip()
 
 def get_book_cover(title, author):
